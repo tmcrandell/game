@@ -1,5 +1,10 @@
-Class Character(self,x,y):
-    def __init__(self):
+import pygame,sys
+from pygame.locals import *
+from colors import *
+
+class Character:
+    
+    def __init__(self,x,y):
         # la di da di da
         self.x=x
         self.y=y
@@ -9,4 +14,4 @@ Class Character(self,x,y):
         self.x+=xdir
         self.y+=ydir
     def draw(self, surf):
-        pygame.draw.rect(surf,RED,self.x,self.y,10,10)
+        pygame.draw.rect(surf,RED,(self.x,self.y,10,10))
