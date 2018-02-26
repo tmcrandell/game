@@ -19,4 +19,4 @@ If an officer, another NPC that randomly roams the entire map, runs into the pla
 The whole map will be randomly generated every instance of the game (i.e. the orientation of the rooms), and so will the officers, snacks, and location of the food.
 It is the player's goal to wander through the rooms until he finds his rack, and lays his weary head to sleep before peril befalls him.
 
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
