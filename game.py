@@ -27,7 +27,7 @@ fpsClock=pygame.time.Clock()
 dispSURF=pygame.display.set_mode((DISP_WIDTH,DISP_HEIGHT),0,32)
 
 
-def disp_score(score,surf,size,x,y,color):
+def disp_text(score,surf,size,x,y,color):
     scoreObj = pygame.font.Font('freesansbold.ttf', size)  #font obj
     scoreSurfaceObj = scoreObj.render(str(score), True, color)
     scoreRectObj = scoreSurfaceObj.get_rect() #text box
@@ -75,12 +75,13 @@ def main():
             mid.grow()
             score+=1
             
-
-        if score==10:
-            displayText("You win!",dispSURF,32,150,50,WHITE)
                         
         draw_world(dispSURF)
-        disp_score(str(score),dispSURF,32,250,25,WHITE)
+        disp_text(str(score),dispSURF,32,250,25,WHITE)
+        if score==10:
+            disp_text("You win!",dispSURF,32,150,50,WHITE)
+            time.sleep(3)
+            break
         mid.draw(RED,dispSURF)
         snack.draw(GREY,dispSURF)
         snack2.draw(GREY,dispSURF)

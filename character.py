@@ -22,6 +22,10 @@ class Character:
             if self.y+ydir<500 and self.y+ydir>0:
                 self.x+=xdir
                 self.y-=ydir
+            elif self.y>500:
+                self.y=480
+            else:
+                self.y=20
     
     def draw(self, color, surf):
         self.rect=pygame.Rect((self.x,self.y,self.width,self.height))
