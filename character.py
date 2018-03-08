@@ -19,9 +19,9 @@ class Character:
     # def ...
     def move(self,xdir,ydir):
         if self.x+xdir<DISP_WIDTH and self.x+xdir>0:
-            if self.y+ydir<DISP_HEIGHT and self.y+ydir>0:
+            if self.y+ydir<500 and self.y+ydir>0:
                 self.x+=xdir
-                self.y+=-ydir
+                self.y-=ydir
     
     def draw(self, color, surf):
         self.rect=pygame.Rect((self.x,self.y,self.width,self.height))
@@ -35,6 +35,6 @@ class Character:
         return self.rect.colliderect(rect)
 
     def relocate(self):
-        self.x=numpy.random.randint(50,350)
-        self.y=numpy.random.randint(50,350)
+        self.x=numpy.random.randint(150,400)
+        self.y=numpy.random.randint(150,400)
 
