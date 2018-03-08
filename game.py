@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import pygame, sys
+import pygame, sys, numpy
 from pygame.locals import *
 
 import colors, character
@@ -17,8 +17,8 @@ midStartY= 380
 oStartX= 0
 
 mid = character.Character(midStartX,midStartY)
-officer = character.Character(100,100)
-#snack = Snack()
+snack = character.Character(numpy.random.randint(0,DISP_WIDTH),numpy.random.randint(0,DISP_HEIGHT))
+
 
 fpsClock=pygame.time.Clock()
 
@@ -28,22 +28,24 @@ def main():
     while True:
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
-                # move guy down
-                mid.move(0,-5)
-            elif event.type == pygame.KEYUP:
-                mid.move(0,5)
-            elif event.type == pygame.K_LEFT:
-                mid.move(-5,0)
-            elif event.type == pygame.K_RIGHT:
-                mid.move(5,0)
-                # elif...
-            elif event.type == QUIT:
+                if event.key == pygame.K_UP:
+                    mid.move(0,5)
+                elif event.key == pygame.K_LEFT:
+                    mid.move(-5,0)
+                elif event.key == pygame.K_RIGHT:
+                    mid.move(5,0)
+                elif event.key == pygame.K_DOWN:
+                    mid.move(0,-5)
+                #elif...
+                
+            if event.type == QUIT:
                 pygame.quit()
                 sys.exit()
-                
-        mid.draw(dispSURF)
+
+        dispSURF.fill(BLACK)
+        mid.draw(RED,dispSURF)
+        snack.draw(GREY,dispSURF)
         pygame.display.update()
         fpsClock.tick(FPS)
-
 
 main()
