@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+import serial
 import pygame, sys, numpy, time
 from pygame.locals import *
 
@@ -16,7 +17,7 @@ midStartX= 250
 midStartY= 380
 oStartX= 0
 
-
+s=serial.Serial("/dev/ttyACM0")
 mid = character.Character(midStartX,midStartY)
 snack = character.Character(numpy.random.randint(0,DISP_WIDTH),numpy.random.randint(150,DISP_HEIGHT))
 snack2= character.Character(numpy.random.randint(0,DISP_WIDTH),numpy.random.randint(150,DISP_HEIGHT))
@@ -48,6 +49,10 @@ def draw_world(surf): #draws everything for scenery
 def main():
     score=0
     while True:
+        s.write('k')
+        l=s.readline()
+        if not len(l)==0:
+            PING=int(l)
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_UP:
@@ -69,7 +74,7 @@ def main():
             mid.grow()
             score+=1
 
-        if PING:
+        if PING<20:
             while mid.width > 10:
                 mid.shrink()
 
