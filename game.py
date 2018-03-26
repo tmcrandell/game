@@ -34,7 +34,7 @@ def disp_text(score,surf,size,x,y,color):
     scoreRectObj.center = (x, y) #text box center
     dispSURF.blit(scoreSurfaceObj,scoreRectObj)
 
-                  
+
 
 def draw_world(surf): #draws everything for scenery
     surf.fill(BLACK) #fills black background
@@ -59,7 +59,7 @@ def main():
                 elif event.key == pygame.K_DOWN:
                     mid.move(0,-10)
                 #elif...
-                
+
             if event.type == QUIT:
                 pygame.quit()
                 sys.exit()
@@ -68,14 +68,17 @@ def main():
             snack.relocate()
             mid.grow()
             score+=1
-            
-            
+
+        if PING:
+            while mid.width > 10:
+                mid.shrink()
+
         if snack2.hitBy(mid):
             snack2.relocate()
             mid.grow()
             score+=1
-            
-                        
+
+
         draw_world(dispSURF)
         disp_text(str(score),dispSURF,32,250,25,WHITE)
         if score==10:

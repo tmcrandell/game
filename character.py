@@ -26,19 +26,22 @@ class Character:
                 self.y=480
             else:
                 self.y=20
-    
+
     def draw(self, color, surf):
         self.rect=pygame.Rect((self.x,self.y,self.width,self.height))
         pygame.draw.rect(surf,color,self.rect)
-        
+
     def grow(self):
         self.width += 2
         self.height += 2
-        
+
+    def shrink(self):
+        self.width -= 2
+        self.height -= 2
+
     def hitBy(self,rect):
         return self.rect.colliderect(rect)
 
     def relocate(self):
         self.x=numpy.random.randint(150,400)
         self.y=numpy.random.randint(150,400)
-
